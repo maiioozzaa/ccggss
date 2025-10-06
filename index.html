@@ -5,11 +5,54 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>GCS — جولف للمقاولات والتوريدات</title>
   <meta name="description" content="GCS — Gulf for Contracting & Supplies: خدمات مقاولات عامة وتوريد مواد إنشائية في القاهرة وجنوب سيناء منذ 1992.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ===== Sidebar Menu ===== */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: var(--blue);
+      cursor: pointer;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -260px;
+      width: 240px;
+      height: 100%;
+      background: #fff;
+      box-shadow: -3px 0 10px rgba(0,0,0,.1);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      transition: right .3s ease;
+    }
+
+    .sidebar.active { right: 0; }
+    .sidebar a {
+      padding: 12px 0;
+      font-weight: 600;
+      color: var(--blue);
+      border-bottom: 1px solid #f2f2f2;
+    }
+
+    .sidebar .close-btn {
+      font-size: 26px;
+      color: var(--orange);
+      align-self: flex-end;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .nav, .btn-outline { display: none; }
+      .menu-toggle { display: block; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -23,149 +66,29 @@
         <a href="#contact">تواصل معنا</a>
       </nav>
       <a class="btn btn-outline" href="#contact">اطلب عرض سعر</a>
+      <div class="menu-toggle" onclick="toggleSidebar()">☰</div>
     </div>
   </header>
 
-  <section id="home" class="hero" style="background-image:url('images/hero.jpg')">
-    <div class="overlay"></div>
-    <div class="container hero-content">
-      <h1>حلـول مقاولات وتوريدات متكاملة</h1>
-      <p>خبرة منذ 1992 في تنفيذ المشاريع السكنية والتجارية والسياحية في القاهرة وجنوب سيناء.</p>
-      <div class="cta-group">
-        <a class="btn btn-primary" href="#contact">تواصل الآن</a>
-        <a class="btn btn-light" href="#projects">مشاريعنا</a>
-      </div>
-    </div>
-  </section>
+  <!-- ===== Sidebar ===== -->
+  <div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="toggleSidebar()">&times;</span>
+    <a href="#home" onclick="toggleSidebar()">الرئيسية</a>
+    <a href="#about" onclick="toggleSidebar()">من نحن</a>
+    <a href="#services" onclick="toggleSidebar()">خدماتنا</a>
+    <a href="#projects" onclick="toggleSidebar()">المعرض</a>
+    <a href="#contact" onclick="toggleSidebar()">تواصل معنا</a>
+  </div>
 
-  <section id="about" class="section about">
-    <div class="container grid-2">
-      <div>
-        <h2>من نحن</h2>
-        <p>
-          تأسست <strong>GCS</strong> عام 1992 كشركة مقاولات وتوريدات متكاملة. نعمل في القاهرة والقاهرة الجديدة
-          والتجمع الخامس، ومحافظات جنوب سيناء مثل شرم الشيخ ودهب والطور وطابا. نقدّم حلولًا هندسية شاملة من
-          التخطيط وإدارة المشروع مرورًا بتوريد المواد عالية الجودة وحتى التركيب والتسليم وفق أعلى معايير الجودة والسلامة.
-        </p>
-        <ul class="list-check">
-          <li>التزام بالمواعيد والجودة والسلامة.</li>
-          <li>فريق هندسي وفني ذو خبرة.</li>
-          <li>شبكة مورّدين موثوقة.</li>
-        </ul>
-        <div class="about-stats">
-          <div class="stat"><span>+30</span><small>عامًا خبرة</small></div>
-          <div class="stat"><span>+6</span><small>محافظات</small></div>
-          <div class="stat"><span>100%</span><small>التزام بالجودة</small></div>
-        </div>
-      </div>
-      <div class="about-media">
-        <img src="images/about.jpg" alt="فريق GCS في أحد مواقع العمل">
-      </div>
-    </div>
-  </section>
+  <!-- باقي الصفحة كما هو (الأقسام - الفوتر) -->
+  <!-- حطي باقي المحتوى من كودك الأصلي من أول قسم <section id="home"> لحد الفوتر بدون أي تعديل -->
 
-  <section id="services" class="section bg-light">
-    <div class="container">
-      <h2 class="center">خدماتنا</h2>
-      <p class="center lead">حلول تنفيذ وتسليم متكاملة للمشروعات السكنية والتجارية والسياحية.</p>
-      <div class="cards">
-        <article class="card">
-          <img src="images/services.jpg" alt="خدمات المقاولات العامة وإدارة المشاريع">
-          <h3>المقاولات العامة وإدارة المشاريع</h3>
-          <p>تنفيذ عقود Turnkey وجزئية مع إشراف هندسي وإدارة دقيقة للتكلفة والوقت والجودة.</p>
-        </article>
-        <article class="card">
-          <img src="images/gallery4.jpg" alt="توريد مواد إنشائية: حديد وأسمنت ورمل وسيراميك">
-          <h3>توريد المواد الإنشائية</h3>
-          <p>شبكة مورّدين معتمدة لحديد التسليح والأسمنت والرمل والبلاط والسيراميك والأدوات الصحية.</p>
-        </article>
-        <article class="card">
-          <img src="images/gallery3.jpg" alt="أعمال التشطيب: رخام وباركيه ودهانات وواجهات">
-          <h3>أعمال التشطيب</h3>
-          <p>رخام وباركيه ودهانات وواجهات بتشطيبات عالية الجودة تسلّم جاهزة للاستخدام.</p>
-        </article>
-        <article class="card">
-          <img src="images/gallery2.jpg" alt="تجهيزات المشروعات السياحية وتركيب وحدات">
-          <h3>تجهيزات المشروعات السياحية</h3>
-          <p>توريد وتركيب وحدات المطابخ والحمامات والتجهيزات الميدانية للمشروعات السياحية.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="center">لماذا تختار GCS؟</h2>
-    
-      <p class="center lead">خبره منذ 1992 في تنفيذ وتوريد لمشاريع عبر محافظات متعددة .</p>
-      <div class="gallery">
-        <figure>
-          <img src="images/gallery1.jpg" alt="مشروع سكني في القاهرة الجديدة">
-          <figcaption>مشروع سكني — القاهرة الجديدة</figcaption>
-        </figure>
-        <figure>
-          <img src="images/gallery2.jpg" alt="تطوير منتجع سياحي في شرم الشيخ">
-          <figcaption>مشروع سياحي — شرم الشيخ</figcaption>
-        </figure>
-        <figure>
-          <img src="images/gallery3.jpg" alt="تشطيبات داخلية بالرخام والدهانات">
-          <figcaption>تشطيبات داخلية — رخام ودهانات</figcaption>
-        </figure>
-        <figure>
-          <img src="images/gallery4.jpg" alt="توريد مواد إنشائية: حديد وأسمنت">
-          <figcaption>توريد مواد — حديد وأسمنت</figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <section class="section bg-light">
-    <div class="container timeline">
-      <h2 class="center">سطرنا الزمني</h2>
-      <ul>
-        <li><span class="t-year">1992</span> التأسيس وبدء نشاط توريدات مواد البناء.</li>
-        <li><span class="t-year">2000s</span> توسيع أنشطة المقاولات في عدة محافظات.</li>
-        <li><span class="t-year">2010s</span> دخول سوق المشروعات السياحية وتعزيز القدرات الهندسية.</li>
-      </ul>
-    </div>
-  </section>
-
-  <section id="contact" class="section contact">
-    <div class="container grid-2">
-      <div>
-        <h2>تواصل معنا</h2>
-        <p>للاستفسارات وطلبات العروض، املأ النموذج أو تواصل مباشرة عبر البريد والهاتف.</p>
-        <ul class="contact-list">
-          <li><strong>البريد:</strong> info@gcs-eg.com</li>
-          <li><strong>الهاتف:</strong> +20 100 000 0000</li>
-          <li><strong>العنوان:</strong> القاهرة — مصر</li>
-        </ul>
-      </div>
-      <form class="contact-form" onsubmit="event.preventDefault(); alert('تم إرسال رسالتك بنجاح!');">
-        <div class="row">
-          <input type="text" placeholder="الاسم الكامل" required>
-          <input type="email" placeholder="البريد الإلكتروني" required>
-        </div>
-        <input type="text" placeholder="الموضوع" required>
-        <textarea rows="5" placeholder="رسالتك" required></textarea>
-        <button class="btn btn-primary" type="submit">إرسال</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container footer-wrap">
-      <img class="logo" src="assets/logo.png" alt="شعار GCS في الفوتر">
-      <p>© <span id="y"></span> GCS — Gulf for Contracting & Supplies. جميع الحقوق محفوظة.</p>
-      <nav class="nav footer-nav">
-        <a href="#about">من نحن</a>
-        <a href="#services">خدماتنا</a>
-        <a href="#projects">المعرض</a>
-        <a href="#contact">تواصل</a>
-      </nav>
-    </div>
-  </footer>
-
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+    document.getElementById('y')?.textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
